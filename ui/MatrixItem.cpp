@@ -2,7 +2,7 @@
 #include "SquareWidget.h"
 #include "oexception.h"
 
-MatrixItem::MatrixItem(int index_, QWidget* parent)
+MatrixItem::MatrixItem(int index_, SquareWidget* parent)
     : QLabel(parent)
     , index(index_)
 {
@@ -20,13 +20,8 @@ MatrixItem::MatrixItem(int index_, QWidget* parent)
 }
 
 void MatrixItem::mouseMoveEvent(QMouseEvent * event) {
-//    qDebug() << "Moved:" << event->localPos();
-    SquareWidget* mySquareWidget = getSquareWidget();
-    if (! mySquareWidget->activeItem) {
-        mySquareWidget->activeItem = this;
-        isActive = true;
-        qDebug() << "Aktiv: " << index;
-    }
+    if (! m_IsActive)
+        mouseGained();
 }
 
 SquareWidget* MatrixItem::getSquareWidget() const {
@@ -34,4 +29,20 @@ SquareWidget* MatrixItem::getSquareWidget() const {
     if (! ret)
         throw OException::NullPointerException(Q_FUNC_INFO, "Parent is no SquareWidget");
     return ret;
+}
+
+
+void MatrixItem::mouseLost() {
+    m_IsActive = false;
+    qDebug() << "Mouse lost";
+}
+
+
+void MatrixItem::mouseGained() {
+    m_IsActive = true;
+    SquareWidget* mySquareWidget = getSquareWidget();
+    if (mySquareWidget->activeItem && (mySquareWidget->activeItem != this))
+        mySquareWidget->activeItem->mouseLost();
+    mySquareWidget->activeItem = this;
+    qDebug() << "Mouse gained";
 }

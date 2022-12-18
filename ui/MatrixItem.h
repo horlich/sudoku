@@ -13,16 +13,20 @@ class MatrixItem : public QLabel
     Q_OBJECT
 public:
     static constexpr int side {50};
-    MatrixItem(int index, QWidget* parent);
+    MatrixItem(int index, SquareWidget* parent);
+
+    void mouseLost();
 
     int index;
-    bool isActive = false;
 
 protected:
     void mouseMoveEvent(QMouseEvent*) override;
 
 private:
+    void mouseGained();
     SquareWidget* getSquareWidget() const;
+
+    bool m_IsActive = false;
 };
 
 #endif // MATRIXITEM_H

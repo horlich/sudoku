@@ -5,6 +5,7 @@
 #include <vector>
 
 class MatrixItem;
+class MatrixWidget;
 
 class SquareWidget : public QWidget
 {
@@ -12,7 +13,7 @@ class SquareWidget : public QWidget
 public:
     static constexpr int getItemIndex(int index, int col, int row);
 
-    explicit SquareWidget(int index, QWidget *parent = nullptr);
+    explicit SquareWidget(int index, MatrixWidget *parent = nullptr);
 
     inline const std::vector<MatrixItem*>& getItems() { return m_MatrixItems; }
 

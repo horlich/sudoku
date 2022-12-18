@@ -1,6 +1,7 @@
 #include "SquareWidget.h"
 #include "MatrixItem.h"
 #include <QGridLayout>
+#include "MatrixWidget.h"
 #include "matrix/Matrix.h"
 
 
@@ -11,7 +12,7 @@ constexpr int SquareWidget::getItemIndex(int index, int col, int row) {
 }
 
 
-SquareWidget::SquareWidget(int index_, QWidget *parent)
+SquareWidget::SquareWidget(int index_, MatrixWidget *parent)
     : QWidget{parent}
     , index(index_)
 {
@@ -34,8 +35,7 @@ SquareWidget::SquareWidget(int index_, QWidget *parent)
 void SquareWidget::mouseMoveEvent(QMouseEvent * event) {
 //    qDebug() << "Moved:" << event->localPos();
     if (activeItem) {
-        activeItem->isActive = false;
+        activeItem->mouseLost();
         activeItem = nullptr;
-        qDebug() << "Inaktiv";
     }
 }
