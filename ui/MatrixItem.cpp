@@ -21,6 +21,12 @@ MatrixItem::MatrixItem(int index_, QWidget* parent)
 
 void MatrixItem::mouseMoveEvent(QMouseEvent * event) {
 //    qDebug() << "Moved:" << event->localPos();
+    SquareWidget* mySquareWidget = getSquareWidget();
+    if (! mySquareWidget->activeItem) {
+        mySquareWidget->activeItem = this;
+        isActive = true;
+        qDebug() << "Aktiv: " << index;
+    }
 }
 
 SquareWidget* MatrixItem::getSquareWidget() const {

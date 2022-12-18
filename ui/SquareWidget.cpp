@@ -32,5 +32,10 @@ SquareWidget::SquareWidget(int index_, QWidget *parent)
 }
 
 void SquareWidget::mouseMoveEvent(QMouseEvent * event) {
-    qDebug() << "Moved:" << event->localPos();
+//    qDebug() << "Moved:" << event->localPos();
+    if (activeItem) {
+        activeItem->isActive = false;
+        activeItem = nullptr;
+        qDebug() << "Inaktiv";
+    }
 }

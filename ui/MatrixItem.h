@@ -16,6 +16,7 @@ public:
     MatrixItem(int index, QWidget* parent);
 
     int index;
+    bool isActive = false;
 
 protected:
     void mouseMoveEvent(QMouseEvent*) override;
