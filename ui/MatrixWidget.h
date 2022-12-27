@@ -6,9 +6,9 @@
 #include <QWidget>
 #include <array>
 
-class MatrixItem;
+class ItemStackedWidget;
 
-using MatrixItemArray = std::array<MatrixItem*, 81>;
+using MatrixItemArray = std::array<ItemStackedWidget*, 81>;
 
 class MatrixWidget : public QWidget
 {

@@ -34,6 +34,10 @@ set(PROJECT_SOURCES
         ui/MatrixItem.cpp
         ui/MatrixWidget.h
         ui/MatrixWidget.cpp
+        ui/NumberEditor.h
+        ui/NumberEditor.cpp
+        ui/ItemStackedWidget.h
+        ui/ItemStackedWidget.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

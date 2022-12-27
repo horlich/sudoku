@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <vector>
 
-class MatrixItem;
+class ItemStackedWidget;
 class MatrixWidget;
 
 class SquareWidget : public QWidget
@@ -15,16 +15,14 @@ public:
 
     explicit SquareWidget(int index, MatrixWidget *parent = nullptr);
 
-    inline const std::vector<MatrixItem*>& getItems() { return m_MatrixItems; }
+    inline const std::vector<ItemStackedWidget*>& getItems() { return m_MatrixItems; }
 
     int index;
-    MatrixItem* activeItem = nullptr;
 
 private:
-    std::vector<MatrixItem*> m_MatrixItems;
+    std::vector<ItemStackedWidget*> m_MatrixItems;
 
 protected:
-    void mouseMoveEvent(QMouseEvent*) override;
 
 signals:
 

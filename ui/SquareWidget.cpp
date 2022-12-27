@@ -1,5 +1,5 @@
 #include "SquareWidget.h"
-#include "MatrixItem.h"
+#include "ItemStackedWidget.h"
 #include <QGridLayout>
 #include "MatrixWidget.h"
 #include "matrix/Matrix.h"
@@ -20,22 +20,13 @@ SquareWidget::SquareWidget(int index_, MatrixWidget *parent)
     for (int row = 0; row < 3; ++row) {
         for (int col = 0; col < 3; ++col) {
             int itemIndex = getItemIndex(index, col, row);
-            MatrixItem* mi = new MatrixItem(itemIndex, this);
-            layout->addWidget(mi, row, col);
-            m_MatrixItems.push_back(mi);
+            ItemStackedWidget* stack = new ItemStackedWidget(itemIndex, this);
+            layout->addWidget(stack, row, col);
+            m_MatrixItems.push_back(stack);
         }
     }
     QPalette palette;
     palette.setColor(QPalette::Window, Qt::white);
     this->setAutoFillBackground(true);
     this->setPalette(palette);
-    setMouseTracking(true);
-}
-
-void SquareWidget::mouseMoveEvent(QMouseEvent * event) {
-//    qDebug() << "Moved:" << event->localPos();
-    if (activeItem) {
-        activeItem->mouseLost();
-        activeItem = nullptr;
-    }
 }

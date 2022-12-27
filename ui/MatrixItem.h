@@ -6,27 +6,18 @@
 #include <QLabel>
 #include <QMouseEvent>
 
-class SquareWidget;
+class ItemStackedWidget;
 
 class MatrixItem : public QLabel
 {
     Q_OBJECT
 public:
-    static constexpr int side {50};
-    MatrixItem(int index, SquareWidget* parent);
+    MatrixItem(ItemStackedWidget* parent);
 
-    void mouseLost();
-
-    int index;
 
 protected:
-    void mouseMoveEvent(QMouseEvent*) override;
 
 private:
-    void mouseGained();
-    SquareWidget* getSquareWidget() const;
-
-    bool m_IsActive = false;
 };
 
 #endif // MATRIXITEM_H

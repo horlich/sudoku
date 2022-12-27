@@ -1,5 +1,5 @@
 #include "MatrixWidget.h"
-#include "MatrixItem.h"
+#include "ItemStackedWidget.h"
 #include "SquareWidget.h"
 #include <QGridLayout>
 #include <QtCore>
@@ -17,13 +17,12 @@ MatrixWidget::MatrixWidget(QWidget *parent)
         for (int col = 0; col < 3; ++col) {
             SquareWidget* sw = new SquareWidget(index++, this);
             layout->addWidget(sw, row, col);
-            for (MatrixItem* item : sw->getItems()) {
+            for (ItemStackedWidget* item : sw->getItems()) {
                 m_ItemArray.at(item->index) = item;
             }
         }
     }
     QPalette palette;
-//    palette.setColor(QPalette::Window, Qt::black);
     palette.setColor(QPalette::Window, mainframe_color);
     this->setAutoFillBackground(true);
     this->setPalette(palette);
@@ -37,7 +36,7 @@ MatrixWidget::MatrixWidget(QWidget *parent)
 void MatrixWidget::setValues(const Matrix& matrix) {
     const PositionVec& positions = matrix.positions();
     for (size_t i = 0; i < positions.size(); ++i) {
-        MatrixItem* item = m_ItemArray.at(i);
-        item->setText(QString::number(positions.at(i)->value().toInt()));
+        ItemStackedWidget* item = m_ItemArray.at(i);
+        item->setFinalNumber(positions.at(i)->value().toInt());
     }
 }
