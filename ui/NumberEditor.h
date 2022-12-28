@@ -3,14 +3,15 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QFrame>
 
-class MatrixItem;
+class ItemStackedWidget;
 
-class NumberEditor : public QWidget
+class NumberEditor : public QFrame
 {
     Q_OBJECT
 public:
-    explicit NumberEditor(MatrixItem *parent = nullptr);
+    explicit NumberEditor(ItemStackedWidget *parent = nullptr);
 
 signals:
 

@@ -8,11 +8,11 @@
 
 class ItemStackedWidget;
 
-class MatrixItem : public QLabel
+class NumberLabel : public QLabel
 {
     Q_OBJECT
 public:
-    MatrixItem(ItemStackedWidget* parent);
+    NumberLabel(ItemStackedWidget* parent);
 
 
 protected:

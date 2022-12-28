@@ -4,13 +4,14 @@
 #include <QStackedWidget>
 
 class SquareWidget;
-class MatrixItem;
+class NumberLabel;
+class NumberEditor;
 
 class ItemStackedWidget : public QStackedWidget
 {
     Q_OBJECT
 public:
-    static constexpr int side {50};
+    static constexpr int side {60};  // must be divisible by 3
 
     ItemStackedWidget(int index, SquareWidget* parent);
 
@@ -23,7 +24,8 @@ protected:
     void leaveEvent(QEvent*) override;
 
 private:
-    MatrixItem* m_MatrixItem = nullptr;
+    NumberLabel* m_NumberLabel = nullptr;
+    NumberEditor* m_NumberEditor = nullptr;
 };
 
 #endif // ITEMSTACKEDWIDGET_H

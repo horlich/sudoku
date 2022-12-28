@@ -30,8 +30,8 @@ set(PROJECT_SOURCES
         ui/MainWidget.cpp
         ui/SquareWidget.h
         ui/SquareWidget.cpp
-        ui/MatrixItem.h
-        ui/MatrixItem.cpp
+        ui/NumberLabel.h
+        ui/NumberLabel.cpp
         ui/MatrixWidget.h
         ui/MatrixWidget.cpp
         ui/NumberEditor.h

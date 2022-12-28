@@ -22,7 +22,7 @@ SquareWidget::SquareWidget(int index_, MatrixWidget *parent)
             int itemIndex = getItemIndex(index, col, row);
             ItemStackedWidget* stack = new ItemStackedWidget(itemIndex, this);
             layout->addWidget(stack, row, col);
-            m_MatrixItems.push_back(stack);
+            m_Items.push_back(stack);
         }
     }
     QPalette palette;

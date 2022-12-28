@@ -15,12 +15,12 @@ public:
 
     explicit SquareWidget(int index, MatrixWidget *parent = nullptr);
 
-    inline const std::vector<ItemStackedWidget*>& getItems() { return m_MatrixItems; }
+    inline const std::vector<ItemStackedWidget*>& getItems() { return m_Items; }
 
     int index;
 
 private:
-    std::vector<ItemStackedWidget*> m_MatrixItems;
+    std::vector<ItemStackedWidget*> m_Items;
 
 protected:
 
