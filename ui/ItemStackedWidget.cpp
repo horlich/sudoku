@@ -14,6 +14,7 @@ ItemStackedWidget::ItemStackedWidget(int index_, SquareWidget* parent)
     addWidget(m_NumberLabel);
     addWidget(m_NumberEditor);
     setCurrentIndex(0);
+    connect(m_NumberEditor, &NumberEditor::finalNumberSelected, this, &ItemStackedWidget::onFinalNumberSelected);
 }
 
 
@@ -31,4 +32,9 @@ void ItemStackedWidget::enterEvent(QEvent* ev) {
 void ItemStackedWidget::leaveEvent(QEvent* ev) {
     ev->accept();
     setCurrentIndex(0);
+}
+
+
+void ItemStackedWidget::onFinalNumberSelected(int i) const {
+    setFinalNumber(i+1);
 }

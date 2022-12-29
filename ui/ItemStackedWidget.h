@@ -16,6 +16,7 @@ public:
     ItemStackedWidget(int index, SquareWidget* parent);
 
     void setFinalNumber(int) const;
+    void onFinalNumberSelected(int) const;
 
     int index;
 
@@ -26,6 +27,7 @@ protected:
 private:
     NumberLabel* m_NumberLabel = nullptr;
     NumberEditor* m_NumberEditor = nullptr;
+
 };
 
 #endif // ITEMSTACKEDWIDGET_H

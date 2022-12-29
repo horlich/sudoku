@@ -12,4 +12,5 @@ NumberLabel::NumberLabel(ItemStackedWidget* parent)
     font.setPixelSize(30);
     font.setBold(true);
     setFont(font);
+    setStyleSheet("color: black; background-color: white");
 }
