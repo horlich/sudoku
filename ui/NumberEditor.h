@@ -9,10 +9,11 @@ class ItemStackedWidget;
 
 class NumberEditor : public QFrame
 {
+    //    static const QPalette& blackPalette();
+    //    static const QPalette& whitePalette();
     Q_OBJECT
+
 public:
-//    static const QPalette& blackPalette();
-//    static const QPalette& whitePalette();
 
     explicit NumberEditor(ItemStackedWidget *parent = nullptr);
 

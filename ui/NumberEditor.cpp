@@ -5,6 +5,8 @@
 #include <QEvent>
 #include <QMouseEvent>
 
+
+
 class TrialNumberItem : public QLabel {
 public:
     explicit TrialNumberItem(int index, NumberEditor* parent);
@@ -30,10 +32,11 @@ TrialNumberItem::TrialNumberItem(int index_, NumberEditor* parent)
     setAlignment(Qt::AlignCenter);
     setFrameShape(QFrame::NoFrame);
     QFont font;
-    font.setPixelSize(12);
+    font.setPixelSize(14);
     setFont(font);
     setText(QString(index + '1'));
-    setStyleSheet("color: black; background-color: white");
+//    setStyleSheet(ItemStackedWidget::styleSheetCommand("black", ItemStackedWidget::backgroundGrey));
+    setStyleSheet(ItemStackedWidget::blackGrey);
 }
 
 
@@ -45,7 +48,7 @@ void TrialNumberItem::enterEvent(QEvent* ev) {
 
 void TrialNumberItem::leaveEvent(QEvent* ev) {
     ev->accept();
-    setStyleSheet("color: black; background-color: white");
+    setStyleSheet(ItemStackedWidget::blackGrey);
 }
 
 
@@ -68,11 +71,12 @@ NumberEditor::NumberEditor(ItemStackedWidget *parent)
 {
     QGridLayout* layout = new QGridLayout(this);
     layout->setSpacing(0);
-    layout->setContentsMargins(2,2,2,2);
+    layout->setContentsMargins(0,0,0,0);
     int index = 0;
     for (int row = 0; row < 3; ++row) {
         for (int col = 0; col < 3; ++col) {
             layout->addWidget(new TrialNumberItem(index++, this), row, col);
         }
     }
+    setStyleSheet("background-color: '#aaaaaa'");
 }

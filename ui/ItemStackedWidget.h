@@ -11,12 +11,20 @@ class ItemStackedWidget : public QStackedWidget
 {
     Q_OBJECT
 public:
-    static constexpr int side {60};  // must be divisible by 3
+    static constexpr int side {60};
+    static constexpr char backgroundGrey[] {"#DDDDDD"};
+    static const QString blackGrey;
+
+    enum class State { Empty, Locked, Trial, Final };
+
+    static QString styleSheetCommand(const QString& color, const QString& backgroundColor);
 
     ItemStackedWidget(int index, SquareWidget* parent);
 
-    void setFinalNumber(int) const;
-    void onFinalNumberSelected(int) const;
+    void setFinalNumber(int);
+    void setLockedNumber(int);
+    void onFinalNumberSelected(int);
+    State setState(State);  // returns old state
 
     int index;
 
@@ -27,6 +35,7 @@ protected:
 private:
     NumberLabel* m_NumberLabel = nullptr;
     NumberEditor* m_NumberEditor = nullptr;
+    State m_State { State::Empty };
 
 };
 

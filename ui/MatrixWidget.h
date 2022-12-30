@@ -17,6 +17,7 @@ public:
     explicit MatrixWidget(QWidget *parent = nullptr);
 
     void setValues(const Matrix&);
+    void presetValues(const Matrix&, int number);
 
 private:
     MatrixItemArray m_ItemArray;

@@ -1,10 +1,14 @@
 #include "MatrixWidget.h"
 #include "ItemStackedWidget.h"
 #include "SquareWidget.h"
+#include "onumber.h"
 #include <QGridLayout>
 #include <QtCore>
+#include <set>
+
 
 const QColor mainframe_color = QColor(234,16,133);
+
 
 MatrixWidget::MatrixWidget(QWidget *parent)
     : QWidget{parent}
@@ -28,9 +32,8 @@ MatrixWidget::MatrixWidget(QWidget *parent)
     this->setPalette(palette);
     Matrix matrix;
     matrix.populate();
-    setValues(matrix);
+    presetValues(matrix, 30);
 }
-
 
 
 void MatrixWidget::setValues(const Matrix& matrix) {
@@ -38,5 +41,21 @@ void MatrixWidget::setValues(const Matrix& matrix) {
     for (size_t i = 0; i < positions.size(); ++i) {
         ItemStackedWidget* item = m_ItemArray.at(i);
         item->setFinalNumber(positions.at(i)->value().toInt());
+    }
+}
+
+
+void MatrixWidget::presetValues(const Matrix& matrix, int number) {
+    const PositionVec& positions = matrix.positions();
+    std::set<int> vs;
+    ONumber::IntGenerator gen(0, 80);
+    while (vs.size() < number) {
+        vs.insert(gen());
+    }
+    for (auto it = vs.begin(); it != vs.end(); ++it) {
+        int index = *it;
+        ItemStackedWidget* item = m_ItemArray.at(index);
+        item->setLockedNumber(positions.at(index)->value().toInt());
+
     }
 }
