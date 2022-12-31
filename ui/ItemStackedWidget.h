@@ -14,6 +14,7 @@ public:
     static constexpr int side {60};
     static constexpr char backgroundGrey[] {"#DDDDDD"};
     static const QString blackGrey;
+    static const QString blackWhite;
 
     enum class State { Empty, Locked, Trial, Final };
 

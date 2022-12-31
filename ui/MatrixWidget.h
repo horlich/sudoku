@@ -9,12 +9,19 @@
 class ItemStackedWidget;
 
 using MatrixItemArray = std::array<ItemStackedWidget*, 81>;
+using Difficulty = int;
 
 class MatrixWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MatrixWidget(QWidget *parent = nullptr);
+    static constexpr Difficulty very_difficult {26};
+    static constexpr Difficulty difficult      {28};
+    static constexpr Difficulty medium         {30};
+    static constexpr Difficulty easy           {32};
+    static constexpr Difficulty very_easy      {34};
+
+    explicit MatrixWidget(Difficulty, QWidget *parent = nullptr);
 
     void setValues(const Matrix&);
     void presetValues(const Matrix&, int number);

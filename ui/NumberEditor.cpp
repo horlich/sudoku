@@ -9,6 +9,8 @@
 
 class TrialNumberItem : public QLabel {
 public:
+    static constexpr int font_pixel_size {15};
+
     explicit TrialNumberItem(int index, NumberEditor* parent);
 
 protected:
@@ -32,10 +34,9 @@ TrialNumberItem::TrialNumberItem(int index_, NumberEditor* parent)
     setAlignment(Qt::AlignCenter);
     setFrameShape(QFrame::NoFrame);
     QFont font;
-    font.setPixelSize(14);
+    font.setPixelSize(font_pixel_size);
     setFont(font);
     setText(QString(index + '1'));
-//    setStyleSheet(ItemStackedWidget::styleSheetCommand("black", ItemStackedWidget::backgroundGrey));
     setStyleSheet(ItemStackedWidget::blackGrey);
 }
 
@@ -64,7 +65,6 @@ void TrialNumberItem::mouseReleaseEvent(QMouseEvent *event) {
         emit m_Parent->trialNumberSelected(index);
     }
 }
-
 
 NumberEditor::NumberEditor(ItemStackedWidget *parent)
     : QFrame{parent}

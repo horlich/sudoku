@@ -16,6 +16,7 @@ QString ItemStackedWidget::styleSheetCommand(const QString& color, const QString
 
 
 const QString ItemStackedWidget::blackGrey = ItemStackedWidget::styleSheetCommand("black", ItemStackedWidget::backgroundGrey);
+const QString ItemStackedWidget::blackWhite = ItemStackedWidget::styleSheetCommand("black", "white");
 
 
 ItemStackedWidget::ItemStackedWidget(int index_, SquareWidget* parent)
@@ -60,6 +61,10 @@ void ItemStackedWidget::enterEvent(QEvent* ev) {
     case State::Empty:
         setCurrentIndex(index_number_editor);
         break;
+    case State::Final:
+        setCurrentIndex(index_number_label);
+        m_NumberLabel->setStyleSheet(blackGrey);
+        break;
     default:
         setCurrentIndex(index_number_label);
     }
@@ -69,6 +74,7 @@ void ItemStackedWidget::enterEvent(QEvent* ev) {
 void ItemStackedWidget::leaveEvent(QEvent* ev) {
     ev->accept();
     setCurrentIndex(index_number_label);
+    m_NumberLabel->setStyleSheet(blackWhite);
 }
 
 

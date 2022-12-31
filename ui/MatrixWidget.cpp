@@ -10,7 +10,7 @@
 const QColor mainframe_color = QColor(234,16,133);
 
 
-MatrixWidget::MatrixWidget(QWidget *parent)
+MatrixWidget::MatrixWidget(Difficulty, QWidget *parent)
     : QWidget{parent}
 {
     int index = 0;

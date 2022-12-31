@@ -14,3 +14,8 @@ NumberLabel::NumberLabel(ItemStackedWidget* parent)
     setFont(font);
     setStyleSheet("color: black; background-color: white");
 }
+
+
+void NumberLabel::clear() {
+    setText("");
+}

@@ -14,6 +14,8 @@ class NumberLabel : public QLabel
 public:
     NumberLabel(ItemStackedWidget* parent);
 
+    void clear();
+
 
 protected:
 

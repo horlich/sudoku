@@ -6,5 +6,5 @@ MainWidget::MainWidget(QWidget *parent)
     : QWidget{parent}
 {
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
-    mainLayout->addWidget(new MatrixWidget(this));
+    mainLayout->addWidget(new MatrixWidget(MatrixWidget::easy, this));
 }
