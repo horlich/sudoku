@@ -26,7 +26,6 @@ void NumberLabel::clear() {
 void NumberLabel::mousePressEvent(QMouseEvent* event) {
     event->accept();
     if (event->button() == Qt::MouseButton::LeftButton) {
-        clear();
         emit singleClicked();
     }
 }

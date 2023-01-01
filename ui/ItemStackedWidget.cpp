@@ -32,7 +32,7 @@ ItemStackedWidget::ItemStackedWidget(int index_, SquareWidget* parent)
     setCurrentIndex(index_number_label);
     connect(m_NumberEditor, &NumberEditor::finalNumberSelected, this, &ItemStackedWidget::onFinalNumberSelected);
     connect(m_NumberEditor, &NumberEditor::trialNumberSelected, this, &ItemStackedWidget::onTrialNumberSelected);
-    connect(m_NumberLabel, &NumberLabel::singleClicked, this, &ItemStackedWidget::setNumberEditor);
+    connect(m_NumberLabel, &NumberLabel::singleClicked, this, &ItemStackedWidget::onNumberLabelClicked);
 }
 
 
@@ -44,7 +44,9 @@ ItemStackedWidget::State ItemStackedWidget::setState(State st) {
 }
 
 
-void ItemStackedWidget::setNumberEditor() {
+void ItemStackedWidget::onNumberLabelClicked() {
+    if (m_State == State::Locked) return;
+    m_NumberLabel->clear();
     setState(State::Trial);
     m_NumberEditor->showAllNumbers(false);
     setCurrentIndex(index_number_editor);
