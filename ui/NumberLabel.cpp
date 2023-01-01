@@ -3,6 +3,8 @@
 #include "NumberEditor.h"
 #include "oexception.h"
 
+
+
 NumberLabel::NumberLabel(ItemStackedWidget* parent)
     : QLabel(parent)
 {
@@ -18,4 +20,13 @@ NumberLabel::NumberLabel(ItemStackedWidget* parent)
 
 void NumberLabel::clear() {
     setText("");
+}
+
+
+void NumberLabel::mousePressEvent(QMouseEvent* event) {
+    event->accept();
+    if (event->button() == Qt::MouseButton::LeftButton) {
+        clear();
+        emit singleClicked();
+    }
 }

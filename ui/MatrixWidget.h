@@ -28,9 +28,6 @@ public:
 
 private:
     MatrixItemArray m_ItemArray;
-
-signals:
-
 };
 
 #endif // MATRIXWIDGET_H

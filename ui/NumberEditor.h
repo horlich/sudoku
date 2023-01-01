@@ -12,6 +12,7 @@ class NumberEditor;
 
 
 class TrialNumberItem : public QLabel {
+    Q_OBJECT
 public:
     static constexpr int font_pixel_size {15};
 
@@ -53,7 +54,6 @@ public:
     void showAllNumbers(bool markSelected) const;
     void showSelectedNumbers();
     void onNumberSelected(int index);
-//    void markSelectedNumbers() const;
 
 signals:
     void finalNumberSelected(int);

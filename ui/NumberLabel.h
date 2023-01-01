@@ -8,6 +8,7 @@
 
 class ItemStackedWidget;
 
+
 class NumberLabel : public QLabel
 {
     Q_OBJECT
@@ -16,10 +17,11 @@ public:
 
     void clear();
 
-
 protected:
+    void mousePressEvent(QMouseEvent*) override;
 
-private:
+signals:
+    void singleClicked();
 };
 
 #endif // MATRIXITEM_H

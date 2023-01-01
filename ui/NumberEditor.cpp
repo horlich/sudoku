@@ -54,6 +54,7 @@ void TrialNumberItem::leaveEvent(QEvent* ev) {
 
 
 void TrialNumberItem::mouseDoubleClickEvent(QMouseEvent *event) {
+    event->accept();
     m_Timer->stop();
     if (event->button() == Qt::MouseButton::LeftButton) {
         m_Parent->clearNumbers();
@@ -63,8 +64,10 @@ void TrialNumberItem::mouseDoubleClickEvent(QMouseEvent *event) {
 
 
 void TrialNumberItem::mousePressEvent(QMouseEvent *event) {
+    event->accept();
     if (event->button() == Qt::MouseButton::LeftButton) {
         m_Timer->start();
+        /* triggers singleClick() if timer expires... */
     }
 }
 
@@ -117,8 +120,12 @@ void NumberEditor::clearNumbers() {
 void NumberEditor::showAllNumbers(bool markSelected) const {
     for (TrialNumberItem* item : m_Items) {
         item->showText();
-        if (markSelected && item->selected)
+        if (markSelected && item->selected) {
             item->setMarked(true);
+        } else if (! markSelected) {
+            item->setMarked(false);
+            item->selected = false;
+        }
     }
 }
 

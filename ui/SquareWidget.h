@@ -7,6 +7,8 @@
 class ItemStackedWidget;
 class MatrixWidget;
 
+
+
 class SquareWidget : public QWidget
 {
     Q_OBJECT
@@ -21,11 +23,6 @@ public:
 
 private:
     std::vector<ItemStackedWidget*> m_Items;
-
-protected:
-
-signals:
-
 };
 
 #endif // SQUAREWIDGET_H
