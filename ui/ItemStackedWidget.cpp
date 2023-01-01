@@ -31,6 +31,7 @@ ItemStackedWidget::ItemStackedWidget(int index_, SquareWidget* parent)
     addWidget(m_NumberEditor);
     setCurrentIndex(index_number_label);
     connect(m_NumberEditor, &NumberEditor::finalNumberSelected, this, &ItemStackedWidget::onFinalNumberSelected);
+    connect(m_NumberEditor, &NumberEditor::trialNumberSelected, this, &ItemStackedWidget::onTrialNumberSelected);
 }
 
 
@@ -44,6 +45,7 @@ ItemStackedWidget::State ItemStackedWidget::setState(State st) {
 
 void ItemStackedWidget::setFinalNumber(int i) {
     m_NumberLabel->setText(QString(i + '0'));
+    setCurrentIndex(index_number_label);
     setState(State::Final);
 }
 
@@ -59,6 +61,8 @@ void ItemStackedWidget::enterEvent(QEvent* ev) {
     switch (m_State) {
     case State::Trial:
     case State::Empty:
+        m_NumberEditor->showAllNumbers(true);
+        m_NumberEditor->setStyleSheet(ItemStackedWidget::blackGrey);
         setCurrentIndex(index_number_editor);
         break;
     case State::Final:
@@ -73,11 +77,24 @@ void ItemStackedWidget::enterEvent(QEvent* ev) {
 
 void ItemStackedWidget::leaveEvent(QEvent* ev) {
     ev->accept();
-    setCurrentIndex(index_number_label);
-    m_NumberLabel->setStyleSheet(blackWhite);
+    switch (m_State) {
+    case (State::Trial):
+        m_NumberEditor->showSelectedNumbers();
+        setCurrentIndex(index_number_editor);
+        m_NumberEditor->setStyleSheet(blackWhite);
+        break;
+    default:
+        setCurrentIndex(index_number_label);
+        m_NumberLabel->setStyleSheet(blackWhite);
+    }
 }
 
 
 void ItemStackedWidget::onFinalNumberSelected(int i) {
-    setFinalNumber(i+1);
+    setFinalNumber(i);
+}
+
+
+void ItemStackedWidget::onTrialNumberSelected() {
+    setState(State::Trial);
 }

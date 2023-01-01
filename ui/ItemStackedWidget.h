@@ -25,6 +25,7 @@ public:
     void setFinalNumber(int);
     void setLockedNumber(int);
     void onFinalNumberSelected(int);
+    void onTrialNumberSelected();
     State setState(State);  // returns old state
 
     int index;
@@ -37,7 +38,6 @@ private:
     NumberLabel* m_NumberLabel = nullptr;
     NumberEditor* m_NumberEditor = nullptr;
     State m_State { State::Empty };
-
 };
 
 #endif // ITEMSTACKEDWIDGET_H
