@@ -19,14 +19,16 @@ public:
     virtual ~Matrix();
 
     void clear();
+    MatrixPosition* position(int index) const;
     bool populate();
     int valueSettings() const { return MatrixPosition::valueSettings(); }
     const PositionVec& positions() const { return m_Positions; }
     void debugPrintPositions() const;
+    void presetValue(int positionIndex, int val);
     void presetValue(int col, int row, int val);
 
 private:
-    MatrixPosition* position(int col, int row);
+    MatrixPosition* position(int col, int row) const;
     bool setValues();
 
     PositionVec m_Positions;

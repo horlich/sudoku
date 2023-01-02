@@ -32,7 +32,7 @@ MatrixWidget::MatrixWidget(Difficulty diff, QWidget *parent)
     this->setAutoFillBackground(true);
     this->setPalette(palette);
     m_Solution.populate();
-    presetRandomValues();
+    presetValues();
 }
 
 
@@ -55,12 +55,31 @@ std::set<int> MatrixWidget::getRandomIntegers(int number) {
 }
 
 
-void MatrixWidget::presetRandomValues() {
-    const PositionVec& positions = m_Solution.positions();
-    std::set<int> vs = getRandomIntegers(m_Difficulty);
-    for (auto it = vs.begin(); it != vs.end(); ++it) {
-        int index = *it;
+void MatrixWidget::presetValues() const
+{
+    Matrix newMatrix;
+    static constexpr int random_start_values {5};
+    std::set<int> vs = getRandomIntegers(random_start_values);
+    for (int index : vs) {
+        int val = m_Solution.position(index)->value().toInt();
+        newMatrix.presetValue(index, val);
         ItemStackedWidget* item = m_ItemArray.at(index);
-        item->setLockedNumber(positions.at(index)->value().toInt());
+        item->setLockedNumber(val);
+    }
+    int totalSet = random_start_values;
+    for (int alternatives = 9; alternatives > 0; --alternatives) {
+        for (int index = 0; index < 80; ++index) {
+            MatrixPosition* mpSolution = m_Solution.position(index);
+            MatrixPosition* mpNew = newMatrix.position(index);
+            if (mpNew->value().isValid()) continue; // we need empty positions!
+            int count = mpNew->countAlternatives();
+            if (count >= alternatives) {
+                int presetVal = mpSolution->value().toInt();
+                newMatrix.presetValue(index, presetVal);
+                ItemStackedWidget* item = m_ItemArray.at(index);
+                item->setLockedNumber(presetVal);
+                if (++totalSet >= m_Difficulty) return;
+            }
+        }
     }
 }

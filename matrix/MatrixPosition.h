@@ -38,6 +38,7 @@ public:
     void addAllie(MatrixPosition* mp);
     bool isAlternative(int) const;
     IntVec getAlternatives() const;
+    int countAlternatives() const;
     PositionVec conflictingPositions(int val) const;
 
     bool operator==(const MatrixPosition& mp) const;

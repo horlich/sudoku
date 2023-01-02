@@ -50,19 +50,33 @@ Matrix::~Matrix() {
 }
 
 
-MatrixPosition* Matrix::position(int col, int row) {
+MatrixPosition* Matrix::position(int index) const {
+    if ((index < 0) || (index > 80))
+        throw std::invalid_argument("Ungültiger Index");
+    return m_Positions.at(index);
+}
+
+
+MatrixPosition* Matrix::position(int col, int row) const {
     if ((col < 0) || (col > 8) || (row < 0) || (row > 8))
         throw std::invalid_argument("Ungültige Position");
     return m_Positions.at(getIndex(col, row));
 }
 
 
-void Matrix::presetValue(int col, int row, int val) {
-    MatrixPosition* pos = position(col, row);
+void Matrix::presetValue(int index, int val) {
+    if ((index < 0) || (index > 80))
+        throw std::invalid_argument("Ungültiger Index");
+    MatrixPosition* pos = m_Positions.at(index);
     if ((val < 1) || (val > 9) || (! pos->isAlternative(val)))
         throw std::invalid_argument("Preset mit illegalem Wert");
     pos->setValue(val);
     pos->locked();
+}
+
+
+void Matrix::presetValue(int col, int row, int val) {
+    presetValue(getIndex(col, row), val);
 }
 
 

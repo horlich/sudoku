@@ -92,6 +92,16 @@ IntVec MatrixPosition::getAlternatives() const {
 }
 
 
+int MatrixPosition::countAlternatives() const {
+    int count = 0;
+    for (int val = 1; val < 10; ++val) {
+        if (isAlternative(val))
+                ++count;
+    }
+    return count;
+}
+
+
 PositionVec MatrixPosition::conflictingPositions(int val) const {
     PositionVec vec;
     if (val == 0) return vec;

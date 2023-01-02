@@ -24,7 +24,7 @@ public:
     explicit MatrixWidget(Difficulty, QWidget *parent = nullptr);
 
     void setValues(const Matrix&);
-    void presetRandomValues();
+    void presetValues() const;
 
 private:
     static std::set<int> getRandomIntegers(int number);
