@@ -24,10 +24,12 @@ public:
     explicit MatrixWidget(Difficulty, QWidget *parent = nullptr);
 
     void setValues(const Matrix&);
-    void presetValues(const Matrix&, int number);
+    void presetRandomValues();
 
 private:
     MatrixItemArray m_ItemArray;
+    Matrix m_Solution;
+    Difficulty m_Difficulty = medium;
 };
 
 #endif // MATRIXWIDGET_H

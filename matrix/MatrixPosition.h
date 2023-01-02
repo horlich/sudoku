@@ -22,46 +22,29 @@ private:
     static int s_ValueSettings;
 
 public:
+    static int valueSettings() { return s_ValueSettings; }
+
     MatrixPosition(int column = invalidArg, int row = invalidArg);
 
     int column() const { return m_Column; }
-
     int row() const { return m_Row; }
-
     MatrixValue value() const { return m_Value; }
-
     void setValue(int);
-
     bool setValue();
-
     void clear();
-
     bool isValid() const;
-
     bool isLocked() const { return m_Locked; }
-
     void locked(bool b = true) { m_Locked = b; }
-
     void addAllie(MatrixPosition* mp);
-
     bool isAlternative(int) const;
-
     IntVec getAlternatives() const;
-
     PositionVec conflictingPositions(int val) const;
 
-    static int valueSettings() { return s_ValueSettings; }
-
     bool operator==(const MatrixPosition& mp) const;
-
     bool operator != (const MatrixPosition& mp) const { return !(*this == mp); }
-
     bool operator<(const MatrixPosition&) const;
-
     bool operator>(const MatrixPosition&) const;
-
     bool operator<=(const MatrixPosition&) const;
-
     bool operator>=(const MatrixPosition&) const;
 
 private:
