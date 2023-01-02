@@ -4,6 +4,7 @@
 #include <sstream>
 #include <memory>
 #include <algorithm>
+#include "onumber.h"
 
 using namespace std;
 

@@ -4,7 +4,7 @@
 
 RandomSet::RandomSet()
 {
-    ONumber::IntGenerator gen(1,9);
+    static ONumber::IntGenerator gen(1,9);
     while (size() < 9) {
         if (size() == 8) { // get the last value
             for (int i = 1; i <= 9; ++i) {

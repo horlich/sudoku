@@ -45,17 +45,22 @@ void MatrixWidget::setValues(const Matrix& matrix) {
 }
 
 
+std::set<int> MatrixWidget::getRandomIntegers(int number) {
+    static ONumber::IntGenerator gen(0, 80);
+    std::set<int> iset;
+    while (iset.size() < number) {
+        iset.insert(gen());
+    }
+    return iset;
+}
+
+
 void MatrixWidget::presetRandomValues() {
     const PositionVec& positions = m_Solution.positions();
-    std::set<int> vs;
-    ONumber::IntGenerator gen(0, 80);
-    while (vs.size() < m_Difficulty) {
-        vs.insert(gen());
-    }
+    std::set<int> vs = getRandomIntegers(m_Difficulty);
     for (auto it = vs.begin(); it != vs.end(); ++it) {
         int index = *it;
         ItemStackedWidget* item = m_ItemArray.at(index);
         item->setLockedNumber(positions.at(index)->value().toInt());
-
     }
 }

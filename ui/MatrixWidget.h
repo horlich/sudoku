@@ -27,6 +27,8 @@ public:
     void presetRandomValues();
 
 private:
+    static std::set<int> getRandomIntegers(int number);
+
     MatrixItemArray m_ItemArray;
     Matrix m_Solution;
     Difficulty m_Difficulty = medium;
