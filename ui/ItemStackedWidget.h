@@ -36,9 +36,14 @@ protected:
     void leaveEvent(QEvent*) override;
 
 private:
+    void setNumberLabel(int);
+
     NumberLabel* m_NumberLabel = nullptr;
     NumberEditor* m_NumberEditor = nullptr;
     State m_State { State::Empty };
+
+signals:
+    void numberLabelChanged(int index, int newVal);
 };
 
 #endif // ITEMSTACKEDWIDGET_H

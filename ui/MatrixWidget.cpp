@@ -24,6 +24,7 @@ MatrixWidget::MatrixWidget(Difficulty diff, QWidget *parent)
             layout->addWidget(sw, row, col);
             for (ItemStackedWidget* item : sw->getItems()) {
                 m_ItemArray.at(item->index) = item;
+                connect(item, &ItemStackedWidget::numberLabelChanged, this, &MatrixWidget::onNumberLabelChanged);
             }
         }
     }
@@ -36,7 +37,8 @@ MatrixWidget::MatrixWidget(Difficulty diff, QWidget *parent)
 }
 
 
-void MatrixWidget::setValues(const Matrix& matrix) {
+void MatrixWidget::setValues(const Matrix& matrix)
+{
     const PositionVec& positions = matrix.positions();
     for (size_t i = 0; i < positions.size(); ++i) {
         ItemStackedWidget* item = m_ItemArray.at(i);
@@ -45,7 +47,8 @@ void MatrixWidget::setValues(const Matrix& matrix) {
 }
 
 
-std::set<int> MatrixWidget::getRandomIntegers(int number) {
+std::set<int> MatrixWidget::getRandomIntegers(int number)
+{
     static ONumber::IntGenerator gen(0, 80);
     std::set<int> iset;
     while (iset.size() < number) {
@@ -55,31 +58,37 @@ std::set<int> MatrixWidget::getRandomIntegers(int number) {
 }
 
 
-void MatrixWidget::presetValues() const
+void MatrixWidget::presetValue(int index)
 {
-    Matrix newMatrix;
+    int val = m_Solution.position(index)->value().toInt();
+    m_Workpiece.presetValue(index, val);
+    ItemStackedWidget* item = m_ItemArray.at(index);
+    item->setLockedNumber(val);
+}
+
+
+void MatrixWidget::presetValues()
+{
     static constexpr int random_start_values {5};
     std::set<int> vs = getRandomIntegers(random_start_values);
-    for (int index : vs) {
-        int val = m_Solution.position(index)->value().toInt();
-        newMatrix.presetValue(index, val);
-        ItemStackedWidget* item = m_ItemArray.at(index);
-        item->setLockedNumber(val);
-    }
+    for (int index : vs)
+        presetValue(index);
     int totalSet = random_start_values;
     for (int alternatives = 9; alternatives > 0; --alternatives) {
         for (int index = 0; index < 80; ++index) {
-            MatrixPosition* mpSolution = m_Solution.position(index);
-            MatrixPosition* mpNew = newMatrix.position(index);
+            MatrixPosition* mpNew = m_Workpiece.position(index);
             if (mpNew->value().isValid()) continue; // we need empty positions!
             int count = mpNew->countAlternatives();
             if (count >= alternatives) {
-                int presetVal = mpSolution->value().toInt();
-                newMatrix.presetValue(index, presetVal);
-                ItemStackedWidget* item = m_ItemArray.at(index);
-                item->setLockedNumber(presetVal);
+                presetValue(index);
                 if (++totalSet >= m_Difficulty) return;
             }
         }
     }
+}
+
+
+void MatrixWidget::onNumberLabelChanged(int index, int val)
+{
+    m_Workpiece.setValue(index, val);
 }

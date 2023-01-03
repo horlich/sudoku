@@ -7,8 +7,6 @@
 
 using namespace std;
 
-int MatrixPosition::s_ValueSettings = 0;
-
 MatrixPosition::MatrixPosition(int column, int row)
     : m_Column(column)
     , m_Row(row)
@@ -22,7 +20,6 @@ void MatrixPosition::setValue(int val) {
         throw std::runtime_error(buf.str());
     }
     m_Value.set(val);
-    ++s_ValueSettings;
 }
 
 
@@ -32,7 +29,7 @@ void MatrixPosition::clear() {
 }
 
 
-bool MatrixPosition::setValue() {
+bool MatrixPosition::setRandomValue() {
     for (int i : getAlternatives()) {
         setValue(i);
         return true;

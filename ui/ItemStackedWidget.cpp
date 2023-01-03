@@ -53,15 +53,21 @@ void ItemStackedWidget::onNumberLabelClicked() {
 }
 
 
-void ItemStackedWidget::setFinalNumber(int i) {
-    m_NumberLabel->setText(QString(i + '0'));
+void ItemStackedWidget::setNumberLabel(int val) {
+    m_NumberLabel->setText(QString(val + '0'));
     setCurrentIndex(index_number_label);
-    setState(State::Final);
 }
 
 
-void ItemStackedWidget::setLockedNumber(int i) {
-    m_NumberLabel->setText(QString(i + '0'));
+void ItemStackedWidget::setFinalNumber(int val) {
+    setNumberLabel(val);
+    setState(State::Final);
+    emit numberLabelChanged(index, val);
+}
+
+
+void ItemStackedWidget::setLockedNumber(int val) {
+    setNumberLabel(val);
     setState(State::Locked);
 }
 

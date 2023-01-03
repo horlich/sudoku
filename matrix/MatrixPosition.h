@@ -19,10 +19,10 @@ using PositionVec = std::vector<MatrixPosition*>;
 class MatrixPosition
 {
 private:
-    static int s_ValueSettings;
+//    static int s_ValueSettings;
 
 public:
-    static int valueSettings() { return s_ValueSettings; }
+//    static int valueSettings() { return s_ValueSettings; }
 
     MatrixPosition(int column = invalidArg, int row = invalidArg);
 
@@ -30,7 +30,7 @@ public:
     int row() const { return m_Row; }
     MatrixValue value() const { return m_Value; }
     void setValue(int);
-    bool setValue();
+    bool setRandomValue();
     void clear();
     bool isValid() const;
     bool isLocked() const { return m_Locked; }

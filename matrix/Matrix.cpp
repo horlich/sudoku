@@ -64,6 +64,12 @@ MatrixPosition* Matrix::position(int col, int row) const {
 }
 
 
+void Matrix::setValue(int index, int val) {
+    MatrixPosition* mp = m_Positions.at(index);
+    mp->setValue(val);
+}
+
+
 void Matrix::presetValue(int index, int val) {
     if ((index < 0) || (index > 80))
         throw std::invalid_argument("Ungültiger Index");
@@ -83,7 +89,7 @@ void Matrix::presetValue(int col, int row, int val) {
 bool Matrix::setValues() {
     for (MatrixPosition* mp : m_Positions) {
         if (mp->isLocked()) continue;
-        if (! mp->setValue()) return false;
+        if (! mp->setRandomValue()) return false;
     }
     return true;
 }

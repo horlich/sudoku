@@ -24,13 +24,16 @@ public:
     explicit MatrixWidget(Difficulty, QWidget *parent = nullptr);
 
     void setValues(const Matrix&);
-    void presetValues() const;
+    void presetValue(int index);  // set a locked value into m_Workspace
+    void presetValues();
+    void onNumberLabelChanged(int index, int val);
 
 private:
     static std::set<int> getRandomIntegers(int number);
 
     MatrixItemArray m_ItemArray;
     Matrix m_Solution;
+    Matrix m_Workpiece;
     Difficulty m_Difficulty = medium;
 };
 
