@@ -5,22 +5,16 @@
 #include <QObject>
 #include <QWidget>
 #include <array>
+#include "Sudoku.h"
 
 class ItemStackedWidget;
 
-using MatrixItemArray = std::array<ItemStackedWidget*, 81>;
-using Difficulty = int;
+using Sudoku::Difficulty;
 
 class MatrixWidget : public QWidget
 {
     Q_OBJECT
 public:
-    static constexpr Difficulty very_difficult {26};
-    static constexpr Difficulty difficult      {28};
-    static constexpr Difficulty medium         {30};
-    static constexpr Difficulty easy           {32};
-    static constexpr Difficulty very_easy      {34};
-
     explicit MatrixWidget(Difficulty, QWidget *parent = nullptr);
 
     void setValues(const Matrix&);
@@ -31,10 +25,10 @@ public:
 private:
     static std::set<int> getRandomIntegers(int number);
 
-    MatrixItemArray m_ItemArray;
+    Sudoku::MatrixItemArray m_ItemArray;
     Matrix m_Solution;
     Matrix m_Workpiece;
-    Difficulty m_Difficulty = medium;
+    Difficulty m_Difficulty = Sudoku::moderate;
 };
 
 #endif // MATRIXWIDGET_H

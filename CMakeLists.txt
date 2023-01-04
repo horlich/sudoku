@@ -38,6 +38,7 @@ set(PROJECT_SOURCES
         ui/NumberEditor.cpp
         ui/ItemStackedWidget.h
         ui/ItemStackedWidget.cpp
+        Sudoku.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -8,22 +8,17 @@
 
 #include "MatrixValue.h"
 #include "RandomSet.h"
+#include "Sudoku.h"
 
 class MatrixPosition;
 
-using IntSet = std::set<int>;
-using IntVec = std::vector<int>;
-using PositionVec = std::vector<MatrixPosition*>;
+using Sudoku::IntVec;
+using Sudoku::PositionVec;
 
 
 class MatrixPosition
 {
-private:
-//    static int s_ValueSettings;
-
 public:
-//    static int valueSettings() { return s_ValueSettings; }
-
     MatrixPosition(int column = invalidArg, int row = invalidArg);
 
     int column() const { return m_Column; }
@@ -57,9 +52,6 @@ private:
     PositionVec m_Allies;
 
 }; // class MatrixPosition
-
-
-//int MatrixPosition::s_ValueSettings = 0;
 
 std::ostream& operator<<(std::ostream&, const MatrixPosition&);
 

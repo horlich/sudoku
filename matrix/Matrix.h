@@ -13,7 +13,9 @@
 class Matrix
 {
 public:
-    static constexpr int getIndex(int col, int row);
+    static constexpr int getIndex(int col, int row) {
+        return row * 9 + col;
+    }
 
     Matrix();
     virtual ~Matrix();

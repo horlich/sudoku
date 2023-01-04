@@ -8,10 +8,6 @@
 
 using namespace std;
 
-constexpr int Matrix::getIndex(int col, int row) {
-    return row * 9 + col;
-}
-
 Matrix::Matrix()
 {
     /* -------------------- Populate m_Positions: -------------------- */
