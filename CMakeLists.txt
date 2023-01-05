@@ -38,6 +38,10 @@ set(PROJECT_SOURCES
         ui/NumberEditor.cpp
         ui/ItemStackedWidget.h
         ui/ItemStackedWidget.cpp
+        ui/GameBoard.h
+        ui/GameBoard.cpp
+        ui/StartBoard.h
+        ui/StartBoard.cpp
         Sudoku.h
 )
 
