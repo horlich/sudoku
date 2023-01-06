@@ -24,7 +24,8 @@ void MatrixPosition::setValue(int val) {
 
 
 void MatrixPosition::clear() {
-    if (isLocked()) return;
+//    if (isLocked()) return;
+    locked(false);
     m_Value.clear();
 }
 

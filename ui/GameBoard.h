@@ -3,6 +3,7 @@
 
 #include <QStackedWidget>
 #include <QObject>
+#include "Sudoku.h"
 
 class MainWidget;
 class MatrixWidget;
@@ -15,6 +16,8 @@ public:
     GameBoard(MainWidget* parent);
 
 private:
+    void onStartGameClicked(Sudoku::Difficulty);
+
     StartBoard* m_StartBoard = nullptr;
     MatrixWidget* m_MatrixWidget = nullptr;
 };

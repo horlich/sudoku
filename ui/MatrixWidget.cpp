@@ -10,9 +10,8 @@
 const QColor mainframe_color = QColor(234,16,133);
 
 
-MatrixWidget::MatrixWidget(Difficulty diff, QWidget *parent)
+MatrixWidget::MatrixWidget(QWidget *parent)
     : QWidget{parent}
-    , m_Difficulty(diff)
 {
     int index = 0;
     QGridLayout* layout = new QGridLayout(this);
@@ -32,8 +31,6 @@ MatrixWidget::MatrixWidget(Difficulty diff, QWidget *parent)
     palette.setColor(QPalette::Window, mainframe_color);
     this->setAutoFillBackground(true);
     this->setPalette(palette);
-    m_Solution.populate();
-    presetValues();
 }
 
 
@@ -67,9 +64,10 @@ void MatrixWidget::presetValue(int index)
 }
 
 
-void MatrixWidget::presetValues()
+void MatrixWidget::presetValues(Difficulty diff)
 {
     static constexpr int random_start_values {5};
+    m_Workpiece.clear();
     std::set<int> vs = getRandomIntegers(random_start_values);
     for (int index : vs)
         presetValue(index);
@@ -81,10 +79,17 @@ void MatrixWidget::presetValues()
             int count = mpNew->countAlternatives();
             if (count >= alternatives) {
                 presetValue(index);
-                if (++totalSet >= m_Difficulty) return;
+                if (++totalSet >= diff) return;
             }
         }
     }
+}
+
+
+void MatrixWidget::startNewGame(Difficulty diff) {
+    m_Solution.clear();
+    m_Solution.populate();
+    presetValues(diff);
 }
 
 
