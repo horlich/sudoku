@@ -68,6 +68,7 @@ void MatrixWidget::presetValues(Difficulty diff)
 {
     static constexpr int random_start_values {5};
     m_Workpiece.clear();
+    clearItems();
     std::set<int> vs = getRandomIntegers(random_start_values);
     for (int index : vs)
         presetValue(index);
@@ -96,4 +97,11 @@ void MatrixWidget::startNewGame(Difficulty diff) {
 void MatrixWidget::onNumberLabelChanged(int index, int val)
 {
     m_Workpiece.setValue(index, val);
+}
+
+
+void MatrixWidget::clearItems() {
+    for (ItemStackedWidget* item : m_ItemArray) {
+        item->clear();
+    }
 }

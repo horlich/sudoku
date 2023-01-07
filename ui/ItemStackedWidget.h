@@ -27,6 +27,7 @@ public:
     void onFinalNumberSelected(int);
     void onTrialNumberSelected();
     State setState(State);  // returns old state
+    void clear();
     void onNumberLabelClicked();
 
     int index;

@@ -44,6 +44,12 @@ ItemStackedWidget::State ItemStackedWidget::setState(State st) {
 }
 
 
+void ItemStackedWidget::clear() {
+    m_NumberLabel->clear();
+    m_NumberEditor->clearNumbers();
+}
+
+
 void ItemStackedWidget::onNumberLabelClicked() {
     if (m_State == State::Locked) return;
     m_NumberLabel->clear();

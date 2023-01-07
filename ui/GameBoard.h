@@ -15,6 +15,8 @@ class GameBoard : public QStackedWidget
 public:
     GameBoard(MainWidget* parent);
 
+    void showStartBoard();
+
 private:
     void onStartGameClicked(Sudoku::Difficulty);
 

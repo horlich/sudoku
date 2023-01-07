@@ -17,6 +17,7 @@ class MatrixWidget : public QWidget
 public:
     explicit MatrixWidget(QWidget *parent = nullptr);
     void onNumberLabelChanged(int index, int val);
+    void clearItems();
     void startNewGame(Difficulty);
 
 private:

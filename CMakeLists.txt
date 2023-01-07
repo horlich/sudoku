@@ -42,6 +42,8 @@ set(PROJECT_SOURCES
         ui/GameBoard.cpp
         ui/StartBoard.h
         ui/StartBoard.cpp
+        ui/NavigationWidget.h
+        ui/NavigationWidget.cpp
         Sudoku.h
 )
 

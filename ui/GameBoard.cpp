@@ -25,3 +25,8 @@ void GameBoard::onStartGameClicked(Sudoku::Difficulty diff) {
     m_MatrixWidget->startNewGame(diff);
     setCurrentIndex(index_matrix_widget);
 }
+
+
+void GameBoard::showStartBoard() {
+    setCurrentIndex(index_start_board);
+}
