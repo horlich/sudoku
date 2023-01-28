@@ -30,7 +30,6 @@ private:
     Sudoku::MatrixItemArray m_ItemArray;
     Matrix m_Solution;
     Matrix m_Workpiece;
-//    Difficulty m_Difficulty = Sudoku::moderate;
 };
 
 #endif // MATRIXWIDGET_H

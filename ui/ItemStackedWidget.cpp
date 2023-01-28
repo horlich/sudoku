@@ -17,6 +17,7 @@ QString ItemStackedWidget::styleSheetCommand(const QString& color, const QString
 
 const QString ItemStackedWidget::blackGrey = ItemStackedWidget::styleSheetCommand("black", ItemStackedWidget::backgroundGrey);
 const QString ItemStackedWidget::blackWhite = ItemStackedWidget::styleSheetCommand("black", "white");
+const QString ItemStackedWidget::blackRed = ItemStackedWidget::styleSheetCommand("black", "red");
 
 
 ItemStackedWidget::ItemStackedWidget(int index_, SquareWidget* parent)
@@ -32,7 +33,6 @@ ItemStackedWidget::ItemStackedWidget(int index_, SquareWidget* parent)
     setCurrentIndex(index_number_label);
     connect(m_NumberEditor, &NumberEditor::finalNumberSelected, this, &ItemStackedWidget::onFinalNumberSelected);
     connect(m_NumberEditor, &NumberEditor::trialNumberSelected, this, &ItemStackedWidget::onTrialNumberSelected);
-    connect(m_NumberLabel, &NumberLabel::singleClicked, this, &ItemStackedWidget::onNumberLabelClicked);
 }
 
 

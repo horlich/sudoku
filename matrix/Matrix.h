@@ -39,5 +39,7 @@ private:
 
 std::ostream& operator<<(std::ostream&, const Matrix&);
 
+IntVec matrixDiff(const Matrix& solution, const Matrix& workpiece);
+
 
 #endif // MATRIX_H

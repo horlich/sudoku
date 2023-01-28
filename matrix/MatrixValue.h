@@ -11,10 +11,10 @@ public:
     inline void clear() { m_Value = 0; }
     bool isValid() const { return m_Value > 0; }
 
-    bool operator==(const MatrixValue&);
-    bool operator!=(const MatrixValue& mv) { return !(mv == *this);  }
-    bool operator==(int);
-    bool operator!=(int i) { return !(i == *this); }
+    bool operator==(const MatrixValue&) const;
+    bool operator!=(const MatrixValue&) const;
+    bool operator==(int) const;
+    bool operator!=(int i) const { return !(i == *this); }
 
 private:
     int m_Value = 0; /* der Wert 0 bedeutet ein leeres Feld */

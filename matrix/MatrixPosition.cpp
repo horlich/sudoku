@@ -14,6 +14,7 @@ MatrixPosition::MatrixPosition(int column, int row)
 
 
 void MatrixPosition::setValue(int val) {
+    if (m_Value == val) return;
     if (isLocked()) {
         stringstream buf;
         buf << "Versuch, gesperrten Wert in Position " << *this << " zu verändern";
@@ -24,7 +25,6 @@ void MatrixPosition::setValue(int val) {
 
 
 void MatrixPosition::clear() {
-//    if (isLocked()) return;
     locked(false);
     m_Value.clear();
 }

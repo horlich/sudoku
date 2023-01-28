@@ -14,11 +14,16 @@ void MatrixValue::set(int i) {
 }
 
 
-bool MatrixValue::operator==(const MatrixValue& other) {
+bool MatrixValue::operator==(const MatrixValue& other) const {
     return this->toInt() == other.toInt();
 }
 
 
-bool MatrixValue::operator==(int other) {
+bool MatrixValue::operator!=(const MatrixValue& other) const {
+    return this->toInt() != other.toInt();
+}
+
+
+bool MatrixValue::operator==(int other) const {
     return this->toInt() == other;
 }

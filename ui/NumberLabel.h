@@ -14,14 +14,17 @@ class NumberLabel : public QLabel
     Q_OBJECT
 public:
     NumberLabel(ItemStackedWidget* parent);
-
+//    int getNumber() const;
     void clear();
+    void redBackground();
 
 protected:
     void mousePressEvent(QMouseEvent*) override;
 
 signals:
-    void singleClicked();
+
+private:
+    ItemStackedWidget* m_Parent;
 };
 
 #endif // MATRIXITEM_H

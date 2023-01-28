@@ -66,7 +66,7 @@ void MatrixWidget::presetValue(int index)
 
 void MatrixWidget::presetValues(Difficulty diff)
 {
-    static constexpr int random_start_values {5};
+    static constexpr int random_start_values {3};
     m_Workpiece.clear();
     clearItems();
     std::set<int> vs = getRandomIntegers(random_start_values);

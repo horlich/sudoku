@@ -137,3 +137,17 @@ ostream& operator<<(ostream& os, const Matrix& m) {
     return os;
 }
 
+
+IntVec matrixDiff(const Matrix& solution, const Matrix& workpiece) {
+    IntVec diff;
+    const auto pos1 = solution.positions();
+    const auto pos2 = workpiece.positions();
+    for (int i = 0; i < pos1.size(); ++i) {
+        MatrixValue wpVal = pos2.at(i)->value();
+        if (! wpVal.isValid()) continue;  // skip empty fields
+        if (pos1.at(i)->value() != wpVal)
+            diff.push_back(i);
+    }
+    return diff;
+}
+

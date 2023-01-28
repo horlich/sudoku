@@ -7,6 +7,7 @@
 
 NumberLabel::NumberLabel(ItemStackedWidget* parent)
     : QLabel(parent)
+    , m_Parent{parent}
 {
     setAlignment(Qt::AlignCenter);
     setFrameShape(QFrame::NoFrame);
@@ -14,18 +15,24 @@ NumberLabel::NumberLabel(ItemStackedWidget* parent)
     font.setPixelSize(30);
     font.setBold(true);
     setFont(font);
-    setStyleSheet("color: black; background-color: white");
+    setStyleSheet(ItemStackedWidget::blackWhite);
 }
 
 
 void NumberLabel::clear() {
     setText("");
+    setStyleSheet(ItemStackedWidget::blackWhite);
+}
+
+
+void NumberLabel::redBackground() {
+    setStyleSheet(ItemStackedWidget::blackRed);
 }
 
 
 void NumberLabel::mousePressEvent(QMouseEvent* event) {
     event->accept();
     if (event->button() == Qt::MouseButton::LeftButton) {
-        emit singleClicked();
+        m_Parent->onNumberLabelClicked();
     }
 }
