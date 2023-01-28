@@ -14,9 +14,8 @@ class NumberLabel : public QLabel
     Q_OBJECT
 public:
     NumberLabel(ItemStackedWidget* parent);
-//    int getNumber() const;
     void clear();
-    void redBackground();
+    void redBackground(bool = true);
 
 protected:
     void mousePressEvent(QMouseEvent*) override;

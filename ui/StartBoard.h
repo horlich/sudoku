@@ -27,7 +27,6 @@ class StartGameButton : public QPushButton
 {
 public:
     StartGameButton(StartBoard* parent);
-
 };
 
 
@@ -47,7 +46,6 @@ protected:
 private:
     SelectDifficultyWidget* m_SelectWidget = nullptr;
     StartGameButton* m_StartButton = nullptr;
-
 };
 
 #endif // STARTBOARD_H

@@ -27,6 +27,13 @@ void GameBoard::onStartGameClicked(Sudoku::Difficulty diff) {
 }
 
 
-void GameBoard::showStartBoard() {
+void GameBoard::showStartBoard()
+{
     setCurrentIndex(index_start_board);
+}
+
+
+void GameBoard::checkNumbers()
+{
+    m_MatrixWidget->checkNumbers();
 }

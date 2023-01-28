@@ -88,6 +88,7 @@ void MatrixWidget::presetValues(Difficulty diff)
 
 
 void MatrixWidget::startNewGame(Difficulty diff) {
+    clearItems();
     m_Solution.clear();
     m_Solution.populate();
     presetValues(diff);
@@ -103,5 +104,13 @@ void MatrixWidget::onNumberLabelChanged(int index, int val)
 void MatrixWidget::clearItems() {
     for (ItemStackedWidget* item : m_ItemArray) {
         item->clear();
+    }
+}
+
+
+void MatrixWidget::checkNumbers() {
+    IntVec diffPos = matrixDiff(m_Solution, m_Workpiece);
+    for (int pos : diffPos) {
+        m_ItemArray[pos]->redLabel(true);
     }
 }

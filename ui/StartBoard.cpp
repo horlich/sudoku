@@ -33,7 +33,7 @@ StartGameButton::StartGameButton(StartBoard* parent)
 StartBoard::StartBoard(GameBoard *parent)
     : QWidget{parent}
     , m_SelectWidget{new SelectDifficultyWidget{this}}
-    , m_StartButton{new StartGameButton(this)}
+    , m_StartButton{new StartGameButton{this}}
 {
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->addWidget(m_SelectWidget, 0, Qt::AlignCenter);

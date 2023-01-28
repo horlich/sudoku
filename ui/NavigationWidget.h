@@ -17,6 +17,13 @@ public:
 };
 
 
+class CheckNumbersButton : public QPushButton
+{
+public:
+    CheckNumbersButton(NavigationWidget* parent);
+};
+
+
 class NavigationWidget : public QWidget
 {
     Q_OBJECT
@@ -26,6 +33,7 @@ public:
 private:
     MainWidget* m_Parent;
     NewGameButton* m_BtNewGame;
+    CheckNumbersButton* m_CheckNumbersButton = nullptr;
 };
 
 #endif // NAVIGATIONWIDGET_H

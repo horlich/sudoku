@@ -47,6 +47,12 @@ ItemStackedWidget::State ItemStackedWidget::setState(State st) {
 void ItemStackedWidget::clear() {
     m_NumberLabel->clear();
     m_NumberEditor->clearNumbers();
+    m_State = State::Empty;
+}
+
+
+void ItemStackedWidget::redLabel(bool b) {
+    m_NumberLabel->redBackground(b);
 }
 
 

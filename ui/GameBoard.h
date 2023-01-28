@@ -16,6 +16,7 @@ public:
     GameBoard(MainWidget* parent);
 
     void showStartBoard();
+    void checkNumbers();
 
 private:
     void onStartGameClicked(Sudoku::Difficulty);

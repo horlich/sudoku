@@ -19,3 +19,9 @@ void MainWidget::displayStartBoard()
 {
     m_GameBoard->showStartBoard();
 }
+
+
+void MainWidget::checkNumbers()
+{
+    m_GameBoard->checkNumbers();
+}

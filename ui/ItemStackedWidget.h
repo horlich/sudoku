@@ -30,6 +30,7 @@ public:
     void onTrialNumberSelected();
     State setState(State);  // returns old state
     void clear();
+    void redLabel(bool = true);
     void onNumberLabelClicked();
 
     int index;

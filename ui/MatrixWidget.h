@@ -19,6 +19,7 @@ public:
     void onNumberLabelChanged(int index, int val);
     void clearItems();
     void startNewGame(Difficulty);
+    void checkNumbers();
 
 private:
     static std::set<int> getRandomIntegers(int number);

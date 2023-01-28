@@ -25,8 +25,8 @@ void NumberLabel::clear() {
 }
 
 
-void NumberLabel::redBackground() {
-    setStyleSheet(ItemStackedWidget::blackRed);
+void NumberLabel::redBackground(bool b) {
+    b ? setStyleSheet(ItemStackedWidget::blackRed) : setStyleSheet(ItemStackedWidget::blackWhite);
 }
 
 

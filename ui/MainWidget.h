@@ -13,6 +13,7 @@ public:
     explicit MainWidget(QWidget *parent = nullptr);
 
     void displayStartBoard();
+    void checkNumbers();
 
 signals:
 
